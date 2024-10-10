@@ -1,7 +1,7 @@
-package Swing.co.CoreX.Compras;
+package CoreX.Compras;
 
-import Swing.co.CoreX.Usuario.Usuario;
-import Swing.co.CoreX.Carrinho.Carrinho;
+import CoreX.Carrinho.Carrinho;
+import CoreX.Usuario.Usuario;
 
 import javax.swing.*;
 import java.awt.*;

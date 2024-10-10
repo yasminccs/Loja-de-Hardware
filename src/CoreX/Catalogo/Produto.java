@@ -1,4 +1,4 @@
-package Swing.co.CoreX.Catalogo;
+package CoreX.Catalogo;
 
 public class Produto {
     private String nome;

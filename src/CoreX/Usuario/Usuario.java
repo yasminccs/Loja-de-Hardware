@@ -1,4 +1,4 @@
-package Swing.co.CoreX.Usuario;
+package CoreX.Usuario;
 
 import javax.swing.*;
 

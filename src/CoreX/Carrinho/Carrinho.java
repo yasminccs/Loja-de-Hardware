@@ -1,9 +1,11 @@
-package Swing.co.CoreX.Carrinho;
+package CoreX.Carrinho;
+import CoreX.Catalogo.Catalogo;
+import CoreX.Compras.Compra;
+
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.List;
-import Swing.co.CoreX.Catalogo.Catalogo;
-import Swing.co.CoreX.Compras.Compra;
+
 
 public class Carrinho {
     private List<Item> itensCarrinho;

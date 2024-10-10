@@ -1,4 +1,4 @@
-package Swing.co.CoreX.Carrinho;
+package CoreX.Carrinho;
 
 public class Item {
     public String nome;

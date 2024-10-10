@@ -1,8 +1,10 @@
-package Swing.co.CoreX;
+package CoreX;
+
+import CoreX.Carrinho.Carrinho;
+import CoreX.Catalogo.Catalogo;
 
 import javax.swing.JOptionPane;
-import Swing.co.CoreX.Catalogo.Catalogo;
-import Swing.co.CoreX.Carrinho.Carrinho;
+
 
 public class Main {
     public static void main(String[] args) {

@@ -1,11 +1,13 @@
-package Swing.co.CoreX.Catalogo;
+package CoreX.Catalogo;
+
+import CoreX.Carrinho.Carrinho;
+import CoreX.Carrinho.Item;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.List;
 
-import Swing.co.CoreX.Carrinho.Carrinho;
-import Swing.co.CoreX.Carrinho.Item;
+
 
 public class Catalogo {
     private static List<Produto> produtos = new ArrayList<>();
