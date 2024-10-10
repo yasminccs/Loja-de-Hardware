@@ -49,10 +49,10 @@ public class Carrinho {
 
             // Exibir as operações junto com o carrinho
             sb.append("Escolha uma operação:\n")
-                    .append("1 - Alterar quantidade\n")
-                    .append("2 - Remover item\n")
+                    .append("1 - Alterar Quantidade do item\n")
+                    .append("2 - Remover um item\n")
                     .append("3 - Limpar carrinho\n")
-                    .append("4 - Voltar para Catálogo\n")
+                    .append("4 - Continuar comprando\n")
                     .append("5 - Finalizar compra");
 
             // Solicitar ao usuário a operação a ser realizada

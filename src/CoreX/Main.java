@@ -15,7 +15,7 @@ public class Main {
         boolean continuar = true;
 
         do {
-            String escolha = JOptionPane.showInputDialog("Escolha uma opção:\n1 - Adicionar produto ao carrinho\n2 - Ir para Carrinho\n3 - Sair");
+            String escolha = JOptionPane.showInputDialog("Escolha uma opção:\n1 - Ir para o catálogo\n2 - Ver Carrinho\n3 - Sair");
 
             if (escolha == null) {
                 JOptionPane.showMessageDialog(null, "Sistema encerrado.");
