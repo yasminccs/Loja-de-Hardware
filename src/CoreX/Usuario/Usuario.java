@@ -55,26 +55,10 @@ public class Usuario {
     public static void cadastrar() {
         String nome = JOptionPane.showInputDialog(null, "Usuário:", "Cadastro", JOptionPane.PLAIN_MESSAGE);
         String senha = JOptionPane.showInputDialog(null, "Senha:", "Cadastro", JOptionPane.PLAIN_MESSAGE);
-
-
-        String[] opcoes = {"Cadastrar", "VOLTAR"};
-        int escolha = JOptionPane.showOptionDialog(null, "O que você deseja fazer?", "Escolha uma opção",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
-
-        switch (escolha) {
-            case 0:
-                cliente.setNome(nome);
-                cliente.setSenha(senha);
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!\nUsuário: " + cliente.getNome() + "\nSenha: " + cliente.getSenha());
-                logar();
-                break;
-            case 1:
-                escolherOp();
-                break;
-
-            default:
-                break;
-        }
+        cliente.setNome(nome);
+        cliente.setSenha(senha);
+        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!\nUsuário: " + cliente.getNome() + "\nSenha: " + cliente.getSenha());
+        logar(); //atualizar para logar automaticamente
     }
     public static void escolherOp(){
         String[] opcoes = {"Login", "Cadastrar", "VOLTAR"};

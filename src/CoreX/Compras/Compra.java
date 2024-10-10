@@ -62,7 +62,7 @@ public class Compra {
                     validarEndereco();
                 } else {
                     // Se o login não estiver verificado, exibe a mensagem de alerta
-                    int resposta = JOptionPane.showConfirmDialog(null, "Login não verificado. Deseja realizar o login agora?", "Atenção", JOptionPane.OK_CANCEL_OPTION);
+                    int resposta = JOptionPane.showConfirmDialog(null, "Deseja realizar o login agora?", "Atenção", JOptionPane.OK_CANCEL_OPTION);
 
                     if (resposta == JOptionPane.OK_OPTION) {
                         // Redireciona para a tela de login/cadastro
@@ -89,8 +89,7 @@ public class Compra {
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcoes, opcoes[0]);
 
         if (resultado == JOptionPane.CLOSED_OPTION || resultado == 0) {
-            JOptionPane.showMessageDialog(null, "Compra cancelada!", "Cancelamento", JOptionPane.INFORMATION_MESSAGE);
-            System.exit(0); // Fecha o programa após exibir a mensagem
+            JOptionPane.showMessageDialog(null, "Compra cancelada!\n", "Cancelamento", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -113,9 +112,5 @@ public class Compra {
             JOptionPane.showMessageDialog(null, "Compra finalizada! Obrigado!");
             System.exit(0); // Vai fechar o programa
         }
-    }
-
-    public static void main(String[] args) {
-        //new Compra();
     }
 }
