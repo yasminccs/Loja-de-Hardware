@@ -38,7 +38,6 @@ public class Catalogo {
             if (op != null && !"".equals(op)) {
                 try {
                     codigo = Integer.parseInt(op);
-                    //exibirProduto(codigo, carrinho);
                     if (produtoJaNoCarrinho(codigo, carrinho)) { // Verifica se o produto já está no carrinho
                         JOptionPane.showMessageDialog(null, "Este produto já está no carrinho.", "Erro", JOptionPane.ERROR_MESSAGE);
                     } else {

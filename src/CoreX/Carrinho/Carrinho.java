@@ -22,29 +22,6 @@ public class Carrinho {
         return itensCarrinho;
     }
 
-    // Método que apenas exibe os itens do carrinho
-    public void exibirCarrinho() {
-        StringBuilder sb = new StringBuilder();
-        float total = 0.2f;
-
-        if (itensCarrinho.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Carrinho vazio.");
-            return;
-        }
-
-        for (int i = 0; i < itensCarrinho.size(); i++) {
-            Item item = itensCarrinho.get(i);
-            sb.append("Item ").append(i + 1).append(":\n")
-                    .append("Produto: ").append(item.getNome()).append("\n")
-                    .append("Quantidade: ").append(item.getQuantidade()).append("\n")
-                    .append("Valor: R$").append(item.calcularValorTotal()).append("\n\n");
-            total += item.calcularValorTotal();
-        }
-
-        sb.append("Total do carrinho: R$").append(total).append("\n");
-        JOptionPane.showMessageDialog(null, sb.toString());
-    }
-
     // Método que lida com as operações do carrinho
     public void escolherOperacao() {
         if (itensCarrinho.isEmpty()) {
@@ -80,30 +57,34 @@ public class Carrinho {
 
             // Solicitar ao usuário a operação a ser realizada
             String input = JOptionPane.showInputDialog(null, sb.toString());
-            int op = 0;
+            String op;
 
             try {
-                op = Integer.parseInt(input);
+                op = input;
                 int index = -1;
 
+                if (op == null) {
+                    JOptionPane.showMessageDialog(null, "Erro: Nenhuma opção foi selecionada. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+
                 switch (op) {
-                    case 1:
+                    case "1":
                         index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja alterar a quantidade:"));
                         int novaQuantidade = Integer.parseInt(JOptionPane.showInputDialog("Digite a nova quantidade para o produto:"));
                         alterarQuantidadeProduto(index, novaQuantidade);
                         break;
-                    case 2:
+                    case "2":
                         index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja remover:"));
                         removerProduto(index);
                         break;
-                    case 3:
+                    case "3":
                         limparCarrinho();
                         break;
-                    case 4:
+                    case "4":
                         continuarOperacoes = false;
                         Catalogo.exibirProdutos(this);
                         break;
-                    case 5:
+                    case "5":
                         new Compra(this);
                         continuarOperacoes = false;
                         break;
