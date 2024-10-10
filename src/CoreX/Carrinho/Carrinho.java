@@ -64,14 +64,22 @@ public class Carrinho {
                 int index = -1;
 
                 if (op == null) {
-                    JOptionPane.showMessageDialog(null, "Erro: Nenhuma opção foi selecionada. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
 
                 switch (op) {
                     case "1":
                         index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja alterar a quantidade:"));
                         int novaQuantidade = Integer.parseInt(JOptionPane.showInputDialog("Digite a nova quantidade para o produto:"));
-                        alterarQuantidadeProduto(index, novaQuantidade);
+                        if(novaQuantidade == 0){
+                            removerProduto(index);
+                        }
+                        else if(novaQuantidade < 0){
+                            JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            alterarQuantidadeProduto(index, novaQuantidade);
+                        }
                         break;
                     case "2":
                         index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja remover:"));
@@ -85,17 +93,22 @@ public class Carrinho {
                         Catalogo.exibirProdutos(this);
                         break;
                     case "5":
-                        new Compra(this);
-                        continuarOperacoes = false;
+                        if (itensCarrinho.isEmpty()) {
+                            JOptionPane.showMessageDialog(null, "Carrinho vazio. Adicione itens antes de finalizar a compra.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            new Compra(this);
+                            continuarOperacoes = false;
+                        }
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Operação inválida. Tente novamente.");
+                        JOptionPane.showMessageDialog(null, "Operação inválida. Tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
                         break;
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, insira um número válido.");
+                JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e){
-                JOptionPane.showMessageDialog(null, "Erro desconhecido.");
+                JOptionPane.showMessageDialog(null, "Erro desconhecido.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
