@@ -1,11 +1,11 @@
 package CoreX.Carrinho;
-import CoreX.Catalogo.Catalogo;
-import CoreX.Compras.Compra;
 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.List;
 
+import CoreX.Catalogo.Catalogo;
+import CoreX.Compras.Compra;
 
 public class Carrinho {
     private List<Item> itensCarrinho;
@@ -76,44 +76,45 @@ public class Carrinho {
                     .append("2 - Remover item\n")
                     .append("3 - Limpar carrinho\n")
                     .append("4 - Voltar para Catálogo\n")
-                    .append("5 - Ir para compras");
+                    .append("5 - Finalizar compra");
 
             // Solicitar ao usuário a operação a ser realizada
             String input = JOptionPane.showInputDialog(null, sb.toString());
             int op = 0;
+
             try {
-                op = Integer.parseInt(input);  // Tenta converter a entrada do usuário em número
+                op = Integer.parseInt(input);
+                int index = -1;
+
+                switch (op) {
+                    case 1:
+                        index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja alterar a quantidade:"));
+                        int novaQuantidade = Integer.parseInt(JOptionPane.showInputDialog("Digite a nova quantidade para o produto:"));
+                        alterarQuantidadeProduto(index, novaQuantidade);
+                        break;
+                    case 2:
+                        index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja remover:"));
+                        removerProduto(index);
+                        break;
+                    case 3:
+                        limparCarrinho();
+                        break;
+                    case 4:
+                        continuarOperacoes = false;
+                        Catalogo.exibirProdutos(this);
+                        break;
+                    case 5:
+                        new Compra(this);
+                        continuarOperacoes = false;
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "Operação inválida. Tente novamente.");
+                        break;
+                }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Entrada inválida. Por favor, insira um número válido.");
-                continue;  // Volta ao início do loop caso a entrada seja inválida
-            }
-            int index = -1;
-
-            switch (op) {
-                case 1:
-                    index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja alterar a quantidade:"));
-                    int novaQuantidade = Integer.parseInt(JOptionPane.showInputDialog("Digite a nova quantidade para o produto:"));
-                    alterarQuantidadeProduto(index, novaQuantidade);
-                    break;
-                case 2:
-                    index += Integer.parseInt(JOptionPane.showInputDialog("Digite o número do item que deseja remover:"));
-                    removerProduto(index);
-                    break;
-                case 3:
-                    limparCarrinho();
-                    continuarOperacoes = false;  // Sai do loop ao limpar o carrinho
-                    break;
-                case 4:
-                    continuarOperacoes = false;
-                    Catalogo.exibirProdutos(this);
-                    break;
-                case 5:
-                    Compra compra = new Compra();
-                    continuarOperacoes = false;
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Operação inválida. Tente novamente.");
-                    break;
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Erro desconhecido.");
             }
         }
     }

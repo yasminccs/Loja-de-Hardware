@@ -1,6 +1,9 @@
 package CoreX.Compras;
 
+
+
 import CoreX.Carrinho.Carrinho;
+import CoreX.Carrinho.Item;
 import CoreX.Usuario.Usuario;
 
 import javax.swing.*;
@@ -15,8 +18,10 @@ public class Compra {
     private JTextField campoEndereco;
     private JButton botaoFinalizar;
     private boolean loginVerificado;
+    private Carrinho carrinho;
 
-    public Compra() {
+    public Compra(Carrinho carrinho) {
+        this.carrinho = carrinho;
         // Verifica se o login foi feito anteriormente
         loginVerificado = Usuario.cliente.getNome() != null && Usuario.cliente.getSenha() != null;
 
@@ -26,10 +31,14 @@ public class Compra {
     public void criarPainel() {
         painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new GridLayout(5, 1));
-        Carrinho carrinho = new Carrinho();
 
-        // Resumo da venda
-        labelResumoVenda = new JLabel("Resumo da venda: " + carrinho.getItensCarrinho());
+        StringBuilder resumo = new StringBuilder("<html>Resumo da venda:<br>");
+        for (Item item : carrinho.getItensCarrinho()) {
+            resumo.append("Produto: ").append(item.getNome()).append(", Quantidade: ").append(item.getQuantidade())
+                    .append(", Valor: R$").append(item.calcularValorTotal()).append("<br>");
+        }
+        resumo.append("</html>");
+        labelResumoVenda = new JLabel(resumo.toString());
         painelPrincipal.add(labelResumoVenda);
 
         // Verificação de login
@@ -107,6 +116,6 @@ public class Compra {
     }
 
     public static void main(String[] args) {
-        new Compra();
+        //new Compra();
     }
 }

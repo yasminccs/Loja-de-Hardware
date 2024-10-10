@@ -5,7 +5,6 @@ import CoreX.Catalogo.Catalogo;
 
 import javax.swing.JOptionPane;
 
-
 public class Main {
     public static void main(String[] args) {
         Catalogo catalogo = new Catalogo();

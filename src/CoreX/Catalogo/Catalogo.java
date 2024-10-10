@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Catalogo {
     private static List<Produto> produtos = new ArrayList<>();
 
