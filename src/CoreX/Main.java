@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         Catalogo catalogo = new Catalogo();
         Carrinho carrinho = new Carrinho();
-
         catalogo.construirListaProdutos();
 
         boolean continuar = true;
@@ -40,4 +39,3 @@ public class Main {
         JOptionPane.showMessageDialog(null, "Obrigado por usar o sistema!");
     }
 }
-
